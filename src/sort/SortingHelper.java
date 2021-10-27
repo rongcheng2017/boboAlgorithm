@@ -1,6 +1,7 @@
 package sort;
 
-import sort.selctsort.SelectionSort;
+import sort.insertionsort.InsertionSort;
+import sort.selectiontsort.SelectionSort;
 
 public class SortingHelper {
     private SortingHelper() {
@@ -15,21 +16,46 @@ public class SortingHelper {
         return true;
     }
 
+
     public static <E extends Comparable<E>> void sortTest(String sortName, E[] arr) {
+        int preSum = 0;
+        for (E e : arr) {
+            preSum += e.hashCode();
+        }
 
         long startTime = System.nanoTime();
         switch (sortName) {
             case "SelectionSort":
                 SelectionSort.sort(arr);
+            case "InsertionSort":
+                InsertionSort.sort(arr);
+            case "InsertionSortPro":
+                InsertionSort.sortPro(arr);
             default:
         }
         long endTime = System.nanoTime();
         System.out.println();
+
         if (!SortingHelper.isSorted(arr)) {
             throw new RuntimeException("SelectionSort failed");
         }
+        int sum = 0;
+        for (E e : arr) {
+            sum += e.hashCode();
+        }
+        if (sum!=preSum){
+            throw new RuntimeException("arr has changed failed");
+        }
+
         double time = (endTime - startTime) / 1000_000_000.0;
         System.out.printf("%s , n = %d : %f s%n", sortName, arr.length, time);
         System.out.println();
     }
+
+    public static <E> void swap(E[] arr, int j, int minIndex) {
+        E temp = arr[j];
+        arr[j] = arr[minIndex];
+        arr[minIndex] = temp;
+    }
+
 }

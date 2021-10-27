@@ -1,4 +1,4 @@
-package sort.selctsort;
+package sort.selectiontsort;
 
 import linearsearch.ArrayGenerator;
 import sort.SortingHelper;
@@ -18,15 +18,11 @@ public class SelectionSort {
                     minIndex = j;
                 }
             }
-            swap(arr, i, minIndex);
+            SortingHelper.swap(arr, i, minIndex);
         }
     }
 
-    private static <E> void swap(E[] arr, int j, int minIndex) {
-        E temp = arr[j];
-        arr[j] = arr[minIndex];
-        arr[minIndex] = temp;
-    }
+
 
     public static void main(String[] args) {
 
