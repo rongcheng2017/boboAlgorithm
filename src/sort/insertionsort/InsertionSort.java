@@ -32,6 +32,17 @@ public class InsertionSort {
         }
     }
 
+    public static <E extends Comparable<E>> void sort(E[] arr,int l ,int r) {
+        for (int i = l; i <=r; i++) {
+            E temp = arr[i];
+            int j = i;
+            for (; j > l && temp.compareTo(arr[j - 1]) < 0; j--) {
+                arr[j] = arr[j - 1];
+            }
+            arr[j] = temp;
+        }
+    }
+
     public static void main(String[] args) {
         int[] dataSize = {10, 100, 1000, 10000, 100000};
         for (int n : dataSize) {

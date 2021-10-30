@@ -2,6 +2,7 @@ package sort.mergesort;
 
 import linearsearch.ArrayGenerator;
 import sort.SortingHelper;
+import sort.insertionsort.InsertionSort;
 
 import java.util.Arrays;
 
@@ -18,10 +19,17 @@ public class MergeSort {
 
     private static <E extends Comparable<E>> void mergeSort(E[] arr, int l, int r) {
         if (l >= r) return;
+//        if (r - l <= 15) {
+//            //小规模的数据使用 O(n) 插入排序 优化
+//            InsertionSort.sort(arr, l, r);
+//            return;
+//        }
         int mid = l + (r - l) / 2;
         mergeSort(arr, l, mid);
         mergeSort(arr, mid + 1, r);
-        merge(arr, l, mid, r);
+        if (arr[mid].compareTo(arr[mid + 1]) > 0) {
+            merge(arr, l, mid, r);
+        }
     }
 
     /**
