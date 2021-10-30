@@ -37,6 +37,10 @@ public class SortingHelper {
                 InsertionSort.sortPro(arr);
             case "MergeSort":
                 MergeSort.sort(arr);
+            case "MergeSortBu":
+                MergeSort.sortBU(arr);
+            case "sortBUWithInsertS":
+                MergeSort.sortBUWithInsertS(arr);
             default:
         }
         long endTime = System.nanoTime();
