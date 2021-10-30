@@ -1,7 +1,11 @@
 package sort;
 
 import sort.insertionsort.InsertionSort;
+import sort.mergesort.MergeSort;
 import sort.selectiontsort.SelectionSort;
+
+import java.util.Stack;
+
 
 public class SortingHelper {
     private SortingHelper() {
@@ -31,6 +35,8 @@ public class SortingHelper {
                 InsertionSort.sort(arr);
             case "InsertionSortPro":
                 InsertionSort.sortPro(arr);
+            case "MergeSort":
+                MergeSort.sort(arr);
             default:
         }
         long endTime = System.nanoTime();
@@ -43,7 +49,7 @@ public class SortingHelper {
         for (E e : arr) {
             sum += e.hashCode();
         }
-        if (sum!=preSum){
+        if (sum != preSum) {
             throw new RuntimeException("arr has changed failed");
         }
 

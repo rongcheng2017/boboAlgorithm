@@ -3,6 +3,9 @@ package sort.selectiontsort;
 import linearsearch.ArrayGenerator;
 import sort.SortingHelper;
 
+import java.util.ArrayList;
+import java.util.Stack;
+
 public class SelectionSort {
 
 
@@ -18,14 +21,13 @@ public class SelectionSort {
                     minIndex = j;
                 }
             }
+
             SortingHelper.swap(arr, i, minIndex);
         }
     }
 
 
-
     public static void main(String[] args) {
-
 //        Student[] students = {
 //                new Student("Alice",98),
 //                new Student("Bobo",100),
